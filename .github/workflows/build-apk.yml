@@ -30,6 +30,7 @@ jobs:
           relative_project_path: ./
           archive_output: false
           export_debug: true
+        	verbose: true
 
       - name: Upload APK as build artifact
         uses: actions/upload-artifact@v4
