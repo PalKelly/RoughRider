@@ -1,0 +1,27 @@
+config_version=5
+
+[application]
+
+config/name="Rough Rider"
+config/features=PackedStringArray("4.3", "Mobile")
+run/main_scene="res://scenes/Main.tscn"
+
+[autoload]
+
+GameState="*res://autoload/GameState.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/handheld/orientation="portrait"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[physics]
+
+2d/default_gravity=980
+
+[rendering]
+
+renderer/rendering_method="mobile"
