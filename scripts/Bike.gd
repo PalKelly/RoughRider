@@ -30,6 +30,7 @@ func _build_bike() -> void:
 	chassis = RigidBody2D.new()
 	chassis.name = "Chassis"
 	chassis.mass = 12.0
+	chassis.can_sleep = false
 	var chassis_shape := CollisionShape2D.new()
 	var chassis_rect := RectangleShape2D.new()
 	chassis_rect.size = Vector2(90, 26)
@@ -57,6 +58,7 @@ func _make_wheel(wheel_name: String, offset: Vector2) -> RigidBody2D:
 	var wheel := RigidBody2D.new()
 	wheel.name = wheel_name
 	wheel.mass = 3.0
+	wheel.can_sleep = false
 	wheel.position = offset
 	var shape := CollisionShape2D.new()
 	var circle := CircleShape2D.new()
