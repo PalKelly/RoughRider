@@ -35,6 +35,14 @@ func _build_bike() -> void:
 	chassis_rect.size = Vector2(90, 26)
 	chassis_shape.shape = chassis_rect
 	chassis.add_child(chassis_shape)
+
+	var chassis_visual := Polygon2D.new()
+	chassis_visual.polygon = PackedVector2Array([
+		Vector2(-45, -13), Vector2(45, -13), Vector2(45, 13), Vector2(-45, 13)
+	])
+	chassis_visual.color = Color(0.9, 0.2, 0.2)
+	chassis.add_child(chassis_visual)
+
 	add_child(chassis)
 
 	rear_wheel = _make_wheel("RearWheel", Vector2(-35, 25))
@@ -55,6 +63,24 @@ func _make_wheel(wheel_name: String, offset: Vector2) -> RigidBody2D:
 	circle.radius = 18.0
 	shape.shape = circle
 	wheel.add_child(shape)
+
+	var wheel_visual := Polygon2D.new()
+	var points := PackedVector2Array()
+	var segments := 16
+	for i in range(segments):
+		var angle := (float(i) / segments) * TAU
+		points.append(Vector2(cos(angle), sin(angle)) * 18.0)
+	wheel_visual.polygon = points
+	wheel_visual.color = Color(0.15, 0.15, 0.15)
+	wheel.add_child(wheel_visual)
+
+	var spoke := Polygon2D.new()
+	spoke.polygon = PackedVector2Array([
+		Vector2(-2, -18), Vector2(2, -18), Vector2(2, 18), Vector2(-2, 18)
+	])
+	spoke.color = Color(0.6, 0.6, 0.6)
+	wheel.add_child(spoke)
+
 	var physmat := PhysicsMaterial.new()
 	physmat.friction = 1.6
 	wheel.physics_material_override = physmat
