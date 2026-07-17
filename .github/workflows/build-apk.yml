@@ -23,14 +23,13 @@ jobs:
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/4.2.stable ~/.local/share/godot/export_templates/4.2.stable
 
+      - name: Import assets
+        run: godot --headless --verbose --editor --quit
+
       - name: Install Android build template
         run: |
           mkdir -p android/build
           unzip -q ~/.local/share/godot/export_templates/4.2.stable/android_source.zip -d android/build
-
-      - name: List extracted build template
-        run: |
-          find android/build -maxdepth 2
 
       - name: Android Build
         run: |
