@@ -24,7 +24,7 @@ jobs:
       - name: Android Build
         run: |
           mkdir -v -p build/android
-          godot --headless --verbose --export-debug "Android" build/android/rough-rider.apk
+          godot --headless --verbose --export-pack "Android" build/android/rough-rider.apk
 
       - name: Upload APK as build artifact
         uses: actions/upload-artifact@v4
