@@ -45,6 +45,14 @@ func _build_visual_and_collision() -> void:
 
 	add_child(static_body)
 
+	var ground_fill := Polygon2D.new()
+	var fill_points := points.duplicate()
+	fill_points.append(Vector2(points[points.size() - 1].x, base_height + 2000))
+	fill_points.append(Vector2(points[0].x, base_height + 2000))
+	ground_fill.polygon = fill_points
+	ground_fill.color = Color(0.22, 0.16, 0.1)
+	add_child(ground_fill)
+
 	var line := Line2D.new()
 	line.points = points
 	line.width = 8.0
