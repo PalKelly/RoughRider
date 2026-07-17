@@ -10,7 +10,7 @@ jobs:
     name: Android Export
     runs-on: ubuntu-24.04
     container:
-      image: barichello/godot-ci:4.3
+      image: barichello/godot-ci:4.2
     steps:
       - uses: actions/checkout@v4
 
@@ -19,12 +19,7 @@ jobs:
           mkdir -v -p ~/.local/share/godot/export_templates/
           mkdir -v -p ~/.config/
           mv /root/.config/godot ~/.config/godot
-          mv /root/.local/share/godot/export_templates/4.3.stable ~/.local/share/godot/export_templates/4.3.stable
-
-      - name: Install Android build template
-        run: |
-          mkdir -p android/build
-          unzip -q ~/.local/share/godot/export_templates/4.3.stable/android_source.zip -d android/build
+          mv /root/.local/share/godot/export_templates/4.2.stable ~/.local/share/godot/export_templates/4.2.stable
 
       - name: Android Build
         run: |
